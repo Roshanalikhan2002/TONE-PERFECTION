@@ -451,3 +451,247 @@ body {
   .footer-ig { margin-right: auto; }
   .footer-copy { text-align: right; }
 }
+
+/* ================= PRODUCT PAGE ================= */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 36px 80px;
+}
+
+/* Gallery */
+.gallery-main {
+  width: 100%;
+  height: 460px;
+  background: linear-gradient(180deg, #fff6e3 0%, #fbe3ee 50%, #efe6fb 100%);
+  overflow: hidden;
+}
+.gallery-main img { width: 100%; height: 100%; object-fit: contain; }
+.gallery-thumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 22px;
+}
+.thumb-arrow {
+  width: 34px; height: 34px;
+  border: 1px solid #e0cdf0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: #8a5fc0;
+  background: #fff;
+  flex-shrink: 0;
+}
+.thumb {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: 1px solid #e0cdf0;
+  background: #faf5ff;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb.active { border: 2px solid #8a5fc0; }
+
+/* Info */
+.p-title { font-family: 'Dancing Script', cursive; font-size: 46px; font-weight: 700; color: #6a4a9a; line-height: 1.05; }
+.p-subtitle { font-family: 'Dancing Script', cursive; font-size: 24px; font-weight: 600; color: #8a5fc0; margin: 8px 0 18px; }
+.p-desc { font-size: 16px; line-height: 1.6; color: #7a6a90; margin-bottom: 22px; }
+.p-offer-label { font-size: 18px; font-weight: 700; color: #6a4a9a; }
+.p-offer-note { font-size: 14px; color: #a99bbf; margin: 6px 0 18px; }
+
+.price-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0cdf0;
+  border-radius: 4px;
+  padding: 16px 18px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #6a4a9a;
+  margin-bottom: 26px;
+}
+.price-box .price { color: #6a4a9a; }
+
+.gift-heading { font-size: 19px; font-weight: 700; color: #6a4a9a; margin-bottom: 14px; }
+.gift-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #e0cdf0;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.gift-option:has(input:checked) {
+  border: 2px solid #8a5fc0;
+  background: #faf5ff;
+}
+.gift-option input { width: 16px; height: 16px; accent-color: #8a5fc0; cursor: pointer; }
+.gift-thumb {
+  width: 42px; height: 42px;
+  border-radius: 4px;
+  background: #f3ebfb;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.gift-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gift-name { font-size: 16px; font-weight: 600; color: #6a4a9a; }
+
+.add-cart {
+  width: 100%;
+  margin-top: 18px;
+  padding: 18px 0;
+  border: none;
+  border-radius: 4px;
+  background: #e07ba8;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-cart:hover { background: #d4659a; }
+.add-cart[disabled] { background: #cbb8dc; cursor: not-allowed; }
+
+/* Discover the formula */
+.formula {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 36px 80px;
+}
+.formula-image-area {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(180deg, #fff6e3 0%, #fbe3ee 50%, #efe6fb 100%);
+  overflow: hidden;
+}
+.formula-image-area img { width: 100%; height: 100%; object-fit: cover; }
+.formula-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 42px;
+  font-weight: 700;
+  color: #8a5fc0;
+  margin-bottom: 40px;
+}
+.acc-item { border-top: 1px solid #efe4f6; }
+.acc-item:last-child { border-bottom: 1px solid #efe4f6; }
+.acc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+  color: #6a4a9a;
+  user-select: none;
+}
+.acc-head .acc-label { flex: 1; }
+.acc-arrow {
+  width: 34px; height: 34px;
+  border: 1px solid #e0cdf0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #8a5fc0;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+.acc-item.open .acc-arrow { transform: rotate(90deg); }
+.acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.acc-item.open .acc-body { grid-template-rows: 1fr; }
+.acc-body-inner { overflow: hidden; }
+.acc-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #7a6a90;
+  padding: 0 0 22px 30px;
+}
+
+/* Product FAQ */
+.pfaq {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 36px 80px;
+}
+.pfaq-title { font-family: 'Dancing Script', cursive; font-size: 44px; font-weight: 700; color: #8a5fc0; margin-bottom: 24px; }
+.pfaq-item { border-bottom: 1px solid #efe4f6; }
+.pfaq-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6a4a9a;
+  user-select: none;
+}
+.pfaq-head .pfaq-plus { font-size: 20px; color: #8a5fc0; transition: transform 0.35s ease; }
+.pfaq-item.open .pfaq-head .pfaq-plus { transform: rotate(45deg); }
+.pfaq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.pfaq-item.open .pfaq-body { grid-template-rows: 1fr; }
+.pfaq-body-inner { overflow: hidden; }
+.pfaq-text { font-size: 15px; line-height: 1.6; color: #7a6a90; padding: 0 0 18px; }
+.pfaq-image-area {
+  width: 100%;
+  height: 380px;
+  background: linear-gradient(180deg, #fff6e3 0%, #fbe3ee 50%, #efe6fb 100%);
+  overflow: hidden;
+}
+.pfaq-image-area img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 768px) {
+  .product {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 24px 20px 50px;
+  }
+  .gallery-main { height: 340px; }
+  .p-title { font-size: 30px; }
+  .p-subtitle { font-size: 17px; }
+
+  .formula {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 10px 20px 50px;
+  }
+  .formula-image-area { height: 300px; }
+  .formula-title { font-size: 30px; margin-bottom: 24px; }
+
+  .pfaq {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 10px 20px 50px;
+  }
+  .pfaq-image-area { height: 300px; order: -1; }
+  .pfaq-title { font-size: 30px; }
+}
