@@ -83,7 +83,7 @@
       <details class="footer-col">
         <summary>Company <span class="plus">+</span></summary>
         <div class="footer-links">
-          <a href="#">About Us</a>
+          <a href="{{ pages.about-us.url | default: '/pages/about-us' }}">About Us</a>
           <a href="{{ pages.contact.url | default: '/pages/contact' }}">Contact Us</a>
         </div>
       </details>
