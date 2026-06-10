@@ -97,8 +97,10 @@
               <input type="email" name="contact[email]" placeholder="Enter your email" required>
               <button type="submit" aria-label="Subscribe">&#8594;</button>
             </div>
+            {% if form.posted_successfully? %}
+              <p class="signup-thanks">Thank you for subscribing!</p>
+            {% endif %}
           {% endform %}
-          <p class="signup-note">By subscribing you agree to the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></p>
         </div>
       </details>
 

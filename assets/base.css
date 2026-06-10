@@ -445,6 +445,7 @@ body {
 }
 .signup-note { font-size: 11px; color: #a99bbf; margin-top: 12px; }
 .signup-note a { color: #8377a0; }
+.signup-thanks { font-size: 14px; font-weight: 600; color: #7bc6a0; margin-top: 12px; }
 
 .footer-bottom {
   max-width: 1180px;
