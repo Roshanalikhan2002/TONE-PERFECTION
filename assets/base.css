@@ -582,7 +582,7 @@ body {
   background: #ffffff;
   overflow: hidden;
 }
-.formula-image-area img { width: 100%; height: 100%; object-fit: contain; }
+.formula-image-area img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
 .formula-title {
   font-family: 'Dancing Script', cursive;
   font-size: 42px;
