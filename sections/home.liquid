@@ -95,6 +95,8 @@
     <div class="faq-image-area">
       {%- if section.settings.faq_image -%}
         {{ section.settings.faq_image | image_url: width: 900 | image_tag }}
+      {%- else -%}
+        <img src="{{ 'home-faq.jpg' | asset_url }}" alt="Frequently asked questions">
       {%- endif -%}
     </div>
   </div>

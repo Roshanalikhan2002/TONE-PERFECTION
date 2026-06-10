@@ -345,12 +345,11 @@
       color: #7a6a90;
       padding: 0 0 18px;
     }
-    /* EMPTY faq image placeholder */
     .faq-image-area {
       width: 100%;
       height: 360px;
-      /* intentionally left empty for image */
     }
+    .faq-image-area img { width: 100%; height: 100%; object-fit: cover; }
 
     @media (max-width: 768px) {
       .faq { padding: 30px 22px 50px; }
@@ -595,7 +594,7 @@
       </details>
     </div>
 
-    <div class="faq-image-area"></div>
+    <div class="faq-image-area"><img src="../assets/home-faq.jpg" alt="Frequently asked questions"></div>
     </div>
   </section>
 
