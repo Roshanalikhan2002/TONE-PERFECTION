@@ -1,0 +1,257 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<style>
+  .bundle-page { color: #5b4a73; }
+
+  /* ---------- Hero ---------- */
+  .bp-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 50px 36px 60px;
+  }
+  .bp-hero-img {
+    width: 100%;
+    height: 540px;
+    background: linear-gradient(180deg, #fff6e3 0%, #fbe3ee 50%, #efe6fb 100%);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bp-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .bp-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    color: #b083d6;
+    margin-bottom: 12px;
+  }
+  .bp-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 56px;
+    font-weight: 700;
+    color: #6a4a9a;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .bp-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: #b083d6;
+    margin-bottom: 18px;
+  }
+  .bp-rating { font-size: 16px; color: #e0a23d; margin-bottom: 18px; }
+  .bp-rating span { color: #9a8bb0; font-size: 14px; margin-left: 6px; }
+  .bp-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #6f6088;
+    margin-bottom: 26px;
+  }
+  .bp-buy {
+    width: 100%;
+    padding: 18px 0;
+    border: none;
+    border-radius: 40px;
+    background: #e07ba8;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+  .bp-buy:hover { background: #d4659a; }
+  .bp-buy[disabled] { background: #cbb8dc; cursor: not-allowed; }
+
+  /* ---------- Research-backed ingredients ---------- */
+  .bp-ing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .bp-ing-left { background: #faf3f6; padding: 60px 6vw; }
+  .bp-ing-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 44px;
+    font-weight: 700;
+    color: #6a4a9a;
+    margin-bottom: 30px;
+  }
+  .bp-ing-row {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ecdce6;
+  }
+  .bp-ing-name { font-weight: 700; color: #6a4a9a; font-size: 15px; }
+  .bp-ing-desc { color: #7a6a90; font-size: 15px; font-family: 'Cormorant Garamond', serif; }
+  .bp-ing-img {
+    min-height: 540px;
+    background: linear-gradient(180deg, #efe6fb 0%, #fbe3ee 100%);
+    overflow: hidden;
+  }
+  .bp-ing-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- FAQ ---------- */
+  .bp-faq { max-width: 880px; margin: 0 auto; padding: 70px 24px 80px; text-align: center; }
+  .bp-faq-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #b083d6;
+    margin-bottom: 8px;
+  }
+  .bp-faq-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 46px;
+    font-weight: 700;
+    color: #6a4a9a;
+    margin-bottom: 34px;
+  }
+  .bp-faq-item { border-bottom: 1px solid #efe4f6; text-align: left; }
+  .bp-faq-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #5b4a73;
+  }
+  .bp-faq-head .bp-faq-plus { font-size: 22px; color: #8a5fc0; transition: transform 0.35s ease; }
+  .bp-faq-item.open .bp-faq-head .bp-faq-plus { transform: rotate(45deg); }
+  .bp-faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
+  .bp-faq-item.open .bp-faq-body { grid-template-rows: 1fr; }
+  .bp-faq-body-inner { overflow: hidden; }
+  .bp-faq-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7a6a90;
+    padding: 0 4px 20px;
+  }
+
+  @media (max-width: 768px) {
+    .bp-hero { grid-template-columns: 1fr; gap: 26px; padding: 26px 20px 40px; }
+    .bp-hero-img { height: 380px; }
+    .bp-title { font-size: 42px; }
+    .bp-sub { font-size: 22px; }
+
+    .bp-ing { grid-template-columns: 1fr; }
+    .bp-ing-left { padding: 40px 22px; }
+    .bp-ing-title { font-size: 34px; }
+    .bp-ing-img { min-height: 340px; }
+
+    .bp-faq { padding: 50px 18px 60px; }
+    .bp-faq-title { font-size: 34px; }
+  }
+</style>
+
+<section class="bundle-page">
+
+  <!-- Hero -->
+  <div class="bp-hero">
+    <div class="bp-hero-img">
+      {%- if product.featured_image -%}
+        <img src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.title | escape }}">
+      {%- endif -%}
+    </div>
+
+    <div class="bp-hero-info">
+      <div class="bp-eyebrow">Complete System</div>
+      <h1 class="bp-title">{{ product.title | default: 'Tone Perfection' }}</h1>
+      <div class="bp-sub">Four steps to a luminous, even-toned glow</div>
+      <div class="bp-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span>(1,430)</span></div>
+      <p class="bp-desc">{{ product.description | default: "Unlock your skin's natural radiance with the Tone Perfection Bundle. This four-product system is carefully designed to target dullness, dark spots, and uneven tone while maintaining hydration and comfort. Following a lightweight, barrier-friendly Korean skincare approach, it combines gentle cleansing, controlled exfoliation, targeted brightening actives, and daily sun protection for clearer, smoother, and radiant skin." }}</p>
+
+      {%- form 'product', product, id: 'bundleForm' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <button type="submit" name="add" class="bp-buy" {% unless current_variant.available %}disabled{% endunless %}>
+          {% if current_variant.available %}buy the kit &mdash; {{ current_variant.price | money }}{% else %}sold out{% endif %}
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+
+  <!-- Research-backed ingredients -->
+  <div class="bp-ing">
+    <div class="bp-ing-left">
+      <div class="bp-eyebrow">Research-Backed Ingredients</div>
+      <h2 class="bp-ing-title">Powered by Nature &amp; Science</h2>
+
+      <div class="bp-ing-row"><div class="bp-ing-name">Honey</div><div class="bp-ing-desc">Soothes and nourishes skin.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Centella Asiatica</div><div class="bp-ing-desc">Calms and strengthens skin.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Glutathione</div><div class="bp-ing-desc">Brightens and protects skin.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Alpha Arbutin</div><div class="bp-ing-desc">Helps fade dark spots.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Kojic Acid Dipalmitate</div><div class="bp-ing-desc">Improves skin clarity.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Niacinamide</div><div class="bp-ing-desc">Refines texture and brightness.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Sodium Ascorbyl Phosphate (Vitamin C)</div><div class="bp-ing-desc">Promotes an even complexion.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Hyaluronic Acid &amp; Glycerin</div><div class="bp-ing-desc">Deliver lasting hydration.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Tocopheryl Acetate (Vitamin E)</div><div class="bp-ing-desc">Provides antioxidant protection.</div></div>
+      <div class="bp-ing-row"><div class="bp-ing-name">Amla Extract</div><div class="bp-ing-desc">Supports radiance and defense.</div></div>
+    </div>
+
+    <div class="bp-ing-img">
+      {%- comment -%} image placeholder — add later {%- endcomment -%}
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="bp-faq">
+    <div class="bp-faq-eyebrow">Got questions?</div>
+    <h2 class="bp-faq-title">Frequently Asked Questions</h2>
+
+    <div class="bp-faq-item">
+      <div class="bp-faq-head"><span>Can I use the toner every night?</span><span class="bp-faq-plus">+</span></div>
+      <div class="bp-faq-body"><div class="bp-faq-body-inner">
+        <p class="bp-faq-text">Start 2&ndash;3 times per week and increase as tolerated to avoid irritation from exfoliating acids.</p>
+      </div></div>
+    </div>
+
+    <div class="bp-faq-item">
+      <div class="bp-faq-head"><span>Is the Tranexamic Brightening Serum safe for sensitive skin?</span><span class="bp-faq-plus">+</span></div>
+      <div class="bp-faq-body"><div class="bp-faq-body-inner">
+        <p class="bp-faq-text">Yes. It combines gentle brightening actives with soothing ingredients like centella to calm the skin.</p>
+      </div></div>
+    </div>
+
+    <div class="bp-faq-item">
+      <div class="bp-faq-head"><span>Can I layer serum under sunscreen?</span><span class="bp-faq-plus">+</span></div>
+      <div class="bp-faq-body"><div class="bp-faq-body-inner">
+        <p class="bp-faq-text">Absolutely. Applying serum first enhances hydration and allows sunscreen to absorb evenly.</p>
+      </div></div>
+    </div>
+
+    <div class="bp-faq-item">
+      <div class="bp-faq-head"><span>Will the Korean Gel Sunscreen leave a white cast?</span><span class="bp-faq-plus">+</span></div>
+      <div class="bp-faq-body"><div class="bp-faq-body-inner">
+        <p class="bp-faq-text">No. It blends effortlessly, leaving a lightweight, non-greasy finish suitable for all skin tones.</p>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  (function () {
+    document.querySelectorAll('.bp-faq-head').forEach(function (head) {
+      head.addEventListener('click', function () {
+        head.parentElement.classList.toggle('open');
+      });
+    });
+  })();
+</script>
