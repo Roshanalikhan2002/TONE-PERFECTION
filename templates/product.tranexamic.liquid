@@ -71,9 +71,7 @@
 <!-- Discover the formula -->
 <section class="formula">
   <div class="formula-image-area">
-    {%- if product.images[1] -%}
-      <img src="{{ product.images[1] | image_url: width: 900 }}" alt="{{ product.title | escape }}">
-    {%- endif -%}
+    <img src="{{ 'tranexamic-discover.jpg' | asset_url }}" alt="Discover the formula">
   </div>
 
   <div class="formula-content">
@@ -156,9 +154,7 @@
   </div>
 
   <div class="pfaq-image-area">
-    {%- if product.images[2] -%}
-      <img src="{{ product.images[2] | image_url: width: 900 }}" alt="{{ product.title | escape }}">
-    {%- endif -%}
+    <img src="{{ 'tranexamic-faq.jpg' | asset_url }}" alt="Frequently asked questions">
   </div>
 </section>
 
