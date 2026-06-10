@@ -16,26 +16,33 @@
 {%- comment -%} Products (image areas left EMPTY) {%- endcomment -%}
 <section class="products">
   <div class="products-grid">
-    <div class="product-card">
+    {%- assign p_serum = all_products['tranexamic-serum'] -%}
+    <a class="product-card" href="{% if p_serum != empty %}{{ p_serum.url }}{% else %}#{% endif %}">
       <div class="product-image-area"><img src="{{ 'card-tranexamic-serum.jpg' | asset_url }}" alt="Tranexamic Serum"></div>
       <div class="product-name">TRANEXAMIC SERUM</div>
-      <button class="product-btn">BUY - RS. 2,790</button>
-    </div>
-    <div class="product-card">
+      <span class="product-btn">{% if p_serum != empty %}BUY - {{ p_serum.price | money }}{% else %}BUY - RS. 2,790{% endif %}</span>
+    </a>
+
+    {%- assign p_cream = all_products['tone-correcting-cream'] -%}
+    <a class="product-card" href="{% if p_cream != empty %}{{ p_cream.url }}{% else %}#{% endif %}">
       <div class="product-image-area"><img src="{{ 'card-tone-correcting-cream.jpg' | asset_url }}" alt="Tone Correcting Cream"></div>
       <div class="product-name">TONE CORRECTING CREAM</div>
-      <button class="product-btn">BUY - RS. 2,680</button>
-    </div>
-    <div class="product-card">
+      <span class="product-btn">{% if p_cream != empty %}BUY - {{ p_cream.price | money }}{% else %}BUY - RS. 2,680{% endif %}</span>
+    </a>
+
+    {%- assign p_toner = all_products['glycolic-renewal-toner'] -%}
+    <a class="product-card" href="{% if p_toner != empty %}{{ p_toner.url }}{% else %}#{% endif %}">
       <div class="product-image-area"><img src="{{ 'card-glycolic-renewal-toner.jpg' | asset_url }}" alt="Glycolic Renewal Toner"></div>
       <div class="product-name">GLYCOLIC RENEWAL TONER</div>
-      <button class="product-btn">BUY - RS. 2,960</button>
-    </div>
-    <div class="product-card">
+      <span class="product-btn">{% if p_toner != empty %}BUY - {{ p_toner.price | money }}{% else %}BUY - RS. 2,960{% endif %}</span>
+    </a>
+
+    {%- assign p_cleanser = all_products['tone-repairing-cleanser'] -%}
+    <a class="product-card" href="{% if p_cleanser != empty %}{{ p_cleanser.url }}{% else %}#{% endif %}">
       <div class="product-image-area"><img src="{{ 'card-tone-repairing-cleanser.jpg' | asset_url }}" alt="Tone Repairing Cleanser"></div>
       <div class="product-name">TONE REPAIRING CLEANSER</div>
-      <button class="product-btn">VIEW BUNDLE</button>
-    </div>
+      <span class="product-btn">{% if p_cleanser != empty %}BUY - {{ p_cleanser.price | money }}{% else %}VIEW BUNDLE{% endif %}</span>
+    </a>
   </div>
 </section>
 

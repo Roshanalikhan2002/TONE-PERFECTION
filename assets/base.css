@@ -193,7 +193,9 @@ body {
   margin: 6px 0 16px;
 }
 .product-btn {
+  display: block;
   width: 100%;
+  text-align: center;
   padding: 12px 0;
   border: 1px solid #e0cdf0;
   border-radius: 30px;
