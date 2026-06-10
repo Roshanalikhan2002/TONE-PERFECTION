@@ -126,6 +126,9 @@ body {
 }
 .hero-brand .seven { font-size: 40px; font-weight: 600; }
 
+/* Mobile hero banner image (hidden on desktop) */
+.hero-mobile-img { display: none; }
+
 @media (max-width: 768px) {
   .navbar { padding: 16px 20px; }
   .nav-left .shop-link { display: none; }
@@ -134,12 +137,21 @@ body {
   .nav-right { gap: 16px; }
   .nav-right .account { display: none; }
 
-  .hero { height: 70vh; min-height: 380px; }
-  .hero-title { font-size: 22px; top: 22px; left: 22px; }
-  .hero-series { font-size: 26px; right: 20px; }
-  .hero-image-area { width: 78%; }
-  .hero-brand { font-size: 20px; letter-spacing: 4px; bottom: 18px; right: 22px; }
-  .hero-brand .seven { font-size: 28px; }
+  /* On mobile, show the full banner image and hide text overlays + gradient */
+  .hero {
+    height: auto;
+    min-height: 0;
+    background: none;
+  }
+  .hero-title,
+  .hero-series,
+  .hero-brand,
+  .hero-image-area { display: none; }
+  .hero-mobile-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
   .announcement-track { font-size: 10px; }
 }

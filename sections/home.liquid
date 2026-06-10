@@ -8,6 +8,9 @@
     {%- endif -%}
   </div>
   <div class="hero-brand"><span>TONE</span><span class="seven">7</span></div>
+
+  <!-- Mobile-only hero banner image -->
+  <img class="hero-mobile-img" src="{{ 'mobile-hero-banner.jpg' | asset_url }}" alt="Tone Perfection Bundle">
 </section>
 
 {%- comment -%} Products (image areas left EMPTY) {%- endcomment -%}
@@ -42,6 +45,8 @@
     <div class="bundle-image-area">
       {%- if section.settings.bundle_image -%}
         {{ section.settings.bundle_image | image_url: width: 900 | image_tag }}
+      {%- else -%}
+        <img src="{{ 'tone-perfection-bundle.jpg' | asset_url }}" alt="Tone Perfection Bundle">
       {%- endif -%}
     </div>
     <div class="bundle-content">
