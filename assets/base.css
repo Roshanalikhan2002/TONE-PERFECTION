@@ -126,16 +126,19 @@ body {
 }
 .hero-brand .seven { font-size: 40px; font-weight: 600; }
 
-/* Desktop hero banner image (fills hero, hidden on mobile) */
+/* Desktop hero banner image (full image, no crop; hidden on mobile) */
 .hero-desktop-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: auto;
 }
-/* When the desktop banner is shown, hide the text/placeholder overlays */
+/* When the desktop banner is shown, let the section grow to the image
+   (no fixed height / gradient) and hide the text/placeholder overlays */
+.hero:has(.hero-desktop-img) {
+  height: auto;
+  min-height: 0;
+  background: none;
+}
 .hero:has(.hero-desktop-img) .hero-title,
 .hero:has(.hero-desktop-img) .hero-series,
 .hero:has(.hero-desktop-img) .hero-brand,
