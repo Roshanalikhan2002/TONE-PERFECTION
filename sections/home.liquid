@@ -63,7 +63,8 @@
       <div class="bundle-tag">NEW!</div>
       <h2 class="bundle-title">Tone Perfection Bundle</h2>
       <p class="bundle-text">Unlock your skin&rsquo;s natural radiance with the Tone Perfection Bundle. This four-product system is carefully designed to target dullness, dark spots, and uneven tone while maintaining hydration and comfort. Following a lightweight, barrier-friendly Korean skincare approach, it combines gentle cleansing, controlled exfoliation, targeted brightening actives, and daily sun protection for clearer, smoother, and radiant skin.</p>
-      <a href="{{ routes.all_products_collection_url }}" class="bundle-btn">Shop Now</a>
+      {%- assign p_bundle = all_products['tone-perfection-bundle'] -%}
+      <a href="{% if p_bundle != empty %}{{ p_bundle.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" class="bundle-btn">Shop Now</a>
     </div>
   </div>
 </section>
