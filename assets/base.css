@@ -126,6 +126,21 @@ body {
 }
 .hero-brand .seven { font-size: 40px; font-weight: 600; }
 
+/* Desktop hero banner image (fills hero, hidden on mobile) */
+.hero-desktop-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* When the desktop banner is shown, hide the text/placeholder overlays */
+.hero:has(.hero-desktop-img) .hero-title,
+.hero:has(.hero-desktop-img) .hero-series,
+.hero:has(.hero-desktop-img) .hero-brand,
+.hero:has(.hero-desktop-img) .hero-image-area { display: none; }
+
 /* Mobile hero banner image (hidden on desktop) */
 .hero-mobile-img { display: none; }
 
@@ -146,7 +161,8 @@ body {
   .hero-title,
   .hero-series,
   .hero-brand,
-  .hero-image-area { display: none; }
+  .hero-image-area,
+  .hero-desktop-img { display: none; }
   .hero-mobile-img {
     display: block;
     width: 100%;
