@@ -1,9 +1,15 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <style>
-  /* Make this product's main image fill the box like the other pages
-     (its photo is more portrait, so contain left thick side bezels) */
-  .product .gallery-main img { object-fit: cover; }
+  /* This photo is more portrait, so plain contain left thick side bezels.
+     Fill the width (no side bezels) but keep a thin gradient line top/bottom
+     so it matches the other product pages. */
+  .product .gallery-main img {
+    object-fit: cover;
+    width: 100%;
+    height: calc(100% - 28px);
+    margin: 14px 0;
+  }
 </style>
 
 <section class="product">
