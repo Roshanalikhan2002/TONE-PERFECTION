@@ -7,7 +7,7 @@
   <link rel="canonical" href="{{ canonical_url }}">
 
   <title>
-    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains 'Tone Perfection' %} &ndash; Tone Perfection{% endunless %}
   </title>
 
   {% if page_description %}
@@ -34,11 +34,11 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-left">
-      <div class="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
+      <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Menu" aria-controls="mobileDrawer" aria-expanded="false"><span></span><span></span><span></span></div>
       <a href="{{ routes.all_products_collection_url }}" class="shop-link">Shop</a>
     </div>
 
-    <a href="{{ routes.root_url }}" class="nav-logo">{{ shop.name | default: 'TONE PERFECTION' }}</a>
+    <a href="{{ routes.root_url }}" class="nav-logo">Tone Perfection</a>
 
     <div class="nav-right">
       <a href="{{ routes.search_url }}" aria-label="Search">
@@ -54,13 +54,32 @@
         </svg>
       </a>
       <a href="{{ routes.cart_url }}" aria-label="Cart">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round">
-          <path d="M6 7h12l-1.2 12.2a1 1 0 0 1-1 .9H8.2a1 1 0 0 1-1-.9L6 7z"></path>
-          <path d="M9 7a3 3 0 0 1 6 0"></path>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 8h11l-1 11a1.5 1.5 0 0 1-1.5 1.4H9a1.5 1.5 0 0 1-1.5-1.4L6.5 8z"></path>
+          <path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path>
         </svg>
       </a>
     </div>
   </nav>
+
+  <!-- Mobile drawer menu -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <span class="drawer-brand">Tone Perfection</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="{{ routes.root_url }}"><span>Home</span></a>
+      <a href="{{ routes.all_products_collection_url }}"><span>Shop All</span></a>
+      {%- assign d_bundle = all_products['tone-perfection-bundle'] -%}
+      <a href="{% if d_bundle != empty %}{{ d_bundle.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}"><span>Tone Perfection Bundle</span></a>
+      <a href="{{ pages.about-us.url | default: '/pages/about-us' }}"><span>About Us</span></a>
+      <a href="{{ pages.contact.url | default: '/pages/contact' }}"><span>Contact Us</span></a>
+      <a href="{{ routes.account_url }}"><span>Account</span></a>
+      <a href="{{ routes.cart_url }}"><span>Cart</span></a>
+    </nav>
+  </aside>
 
   <main>
     {{ content_for_layout }}
@@ -112,7 +131,7 @@
         <circle cx="12" cy="12" r="4"></circle>
         <circle cx="17.5" cy="6.5" r="0.6" fill="#8a5fc0" stroke="none"></circle>
       </svg>
-      <div class="footer-copy">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | default: 'TONE PERFECTION' }}.</div>
+      <div class="footer-copy">&copy; {{ 'now' | date: '%Y' }}, Tone Perfection.</div>
     </div>
   </footer>
 
@@ -127,6 +146,39 @@
       }
       syncFooter();
       desktopMQ.addEventListener('change', syncFooter);
+    })();
+
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var drawer = document.getElementById('mobileDrawer');
+      var overlay = document.getElementById('drawerOverlay');
+      var closeBtn = document.getElementById('drawerClose');
+      if (!hamburger || !drawer || !overlay) return;
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        document.body.classList.add('drawer-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.classList.remove('drawer-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      hamburger.addEventListener('click', openDrawer);
+      hamburger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(); }
+      });
+      overlay.addEventListener('click', closeDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeDrawer();
+      });
     })();
   </script>
 
