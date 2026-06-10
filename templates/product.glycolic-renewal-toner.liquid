@@ -29,7 +29,7 @@
     <div class="p-subtitle">Renew &amp; Refine</div>
     <div class="p-desc">{{ product.description | default: 'A resurfacing toner designed to promote smoother, clearer skin by gently exfoliating and renewing the surface. It helps refine texture, unclog pores, and boost radiance while keeping the skin balanced and comfortable with continued use.' }}</div>
 
-    {%- form 'product', product, id: 'tonerForm' -%}
+    {%- form 'product', product, id: 'tonerForm', class: 'bogo-form' -%}
       <input type="hidden" name="id" value="{{ current_variant.id }}">
 
       <div class="p-offer-label">Buy 1 Get 1</div>
@@ -43,19 +43,19 @@
       <div class="gift-heading">Choose your free gift</div>
 
       <label class="gift-option">
-        <input type="radio" name="properties[Free gift]" value="Tranexamic Serum" checked>
+        <input type="radio" name="gift-variant" value="{{ all_products['tranexamic-serum'].selected_or_first_available_variant.id }}" data-name="Tranexamic Serum" checked>
         <div class="gift-thumb"><img src="{{ 'card-tranexamic-serum.jpg' | asset_url }}" alt="Tranexamic Serum"></div>
         <div class="gift-name">Tranexamic Serum</div>
       </label>
 
       <label class="gift-option">
-        <input type="radio" name="properties[Free gift]" value="Tone Correcting Cream">
+        <input type="radio" name="gift-variant" value="{{ all_products['tone-correcting-cream'].selected_or_first_available_variant.id }}" data-name="Tone Correcting Cream">
         <div class="gift-thumb"><img src="{{ 'card-tone-correcting-cream.jpg' | asset_url }}" alt="Tone Correcting Cream"></div>
         <div class="gift-name">Tone Correcting Cream</div>
       </label>
 
       <label class="gift-option">
-        <input type="radio" name="properties[Free gift]" value="Tone Repairing Cleanser">
+        <input type="radio" name="gift-variant" value="{{ all_products['tone-repairing-cleanser'].selected_or_first_available_variant.id }}" data-name="Tone Repairing Cleanser">
         <div class="gift-thumb"><img src="{{ 'card-tone-repairing-cleanser.jpg' | asset_url }}" alt="Tone Repairing Cleanser"></div>
         <div class="gift-name">Tone Repairing Cleanser</div>
       </label>

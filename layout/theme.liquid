@@ -180,6 +180,41 @@
         if (e.key === 'Escape') closeDrawer();
       });
     })();
+
+    /* Buy 1 Get 1: add main product + selected free gift as two cart items */
+    (function () {
+      document.querySelectorAll('form.bogo-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          var mainInput = form.querySelector('input[name="id"]');
+          var gift = form.querySelector('input[name="gift-variant"]:checked');
+          if (!mainInput || !gift || !gift.value) { return; }
+
+          e.preventDefault();
+          var btn = form.querySelector('button[name="add"], .add-cart');
+          if (btn) { btn.disabled = true; }
+
+          var items = [
+            { id: Number(mainInput.value), quantity: 1, properties: { 'Offer': 'Buy 1 Get 1' } },
+            { id: Number(gift.value), quantity: 1, properties: { 'Free gift': gift.getAttribute('data-name') || 'Yes' } }
+          ];
+
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ items: items })
+          })
+            .then(function (r) {
+              if (!r.ok) { throw new Error('add failed'); }
+              return r.json();
+            })
+            .then(function () { window.location.href = '{{ routes.cart_url }}'; })
+            .catch(function () {
+              if (btn) { btn.disabled = false; }
+              form.submit();
+            });
+        });
+      });
+    })();
   </script>
 
 </body>
