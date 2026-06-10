@@ -1,0 +1,27 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "TONE PERFECTION",
+    "theme_version": "1.0.0",
+    "theme_author": "Roshanalikhan2002",
+    "theme_documentation_url": "https://github.com/Roshanalikhan2002/TONE-PERFECTION",
+    "theme_support_url": "https://github.com/Roshanalikhan2002/TONE-PERFECTION"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (pink)",
+        "default": "#e07ba8"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Heading (purple)",
+        "default": "#8a5fc0"
+      }
+    ]
+  }
+]

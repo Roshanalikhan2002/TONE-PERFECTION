@@ -1,0 +1,8 @@
+<section style="max-width:600px;margin:0 auto;padding:60px 36px;text-align:center;">
+  <h1 class="bundle-title">{{ shop.name }} Gift Card</h1>
+  <p class="bundle-text">Value: {{ gift_card.initial_value | money }}</p>
+  {%- if gift_card.qr_identifier -%}
+    <img src="{{ gift_card.qr_identifier }}" alt="Gift card QR code">
+  {%- endif -%}
+  <p class="bundle-tag" style="margin-top:20px;">{{ gift_card.code | format_code }}</p>
+</section>

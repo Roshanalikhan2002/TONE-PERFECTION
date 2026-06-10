@@ -1,0 +1,23 @@
+<section style="max-width:1000px;margin:0 auto;padding:50px 36px 80px;">
+  <h1 class="faq-title">Your Cart</h1>
+  {%- if cart.item_count > 0 -%}
+    {%- form 'cart', cart -%}
+      {%- for item in cart.items -%}
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #efe4f6;padding:16px 0;">
+          <div>
+            <div class="product-name" style="align-self:auto;">{{ item.product.title }}</div>
+            <div class="signup-note">Qty: {{ item.quantity }}</div>
+          </div>
+          <div class="bundle-tag" style="margin:0;">{{ item.final_line_price | money }}</div>
+        </div>
+      {%- endfor -%}
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;">
+        <div class="bundle-title" style="font-size:28px;margin:0;">{{ cart.total_price | money }}</div>
+        <button type="submit" name="checkout" class="bundle-btn">Checkout</button>
+      </div>
+    {%- endform -%}
+  {%- else -%}
+    <p class="bundle-text">Your cart is empty.</p>
+    <a href="{{ routes.all_products_collection_url }}" class="bundle-btn">Continue shopping</a>
+  {%- endif -%}
+</section>

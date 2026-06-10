@@ -1,0 +1,9 @@
+<section style="max-width:1000px;margin:0 auto;padding:50px 36px 80px;">
+  <h1 class="faq-title">{{ blog.title }}</h1>
+  {%- for article in blog.articles -%}
+    <div style="border-bottom:1px solid #efe4f6;padding:18px 0;">
+      <a href="{{ article.url }}" class="bundle-title" style="font-size:26px;text-decoration:none;">{{ article.title }}</a>
+      <p class="bundle-text">{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p>
+    </div>
+  {%- endfor -%}
+</section>
