@@ -151,7 +151,7 @@ body {
   .navbar { padding: 16px 20px; }
   .nav-left .shop-link { display: none; }
   .hamburger { display: flex; }
-  .nav-logo { font-size: 18px; letter-spacing: 1px; }
+  .nav-logo { font-size: 28px; letter-spacing: 0.5px; }
   .nav-right { gap: 16px; }
   .nav-right .account { display: none; }
 
