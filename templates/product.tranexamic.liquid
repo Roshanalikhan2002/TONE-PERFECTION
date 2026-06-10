@@ -26,8 +26,8 @@
   <!-- Right: info -->
   <div class="info">
     <h1 class="p-title">{{ product.title }}</h1>
-    <div class="p-subtitle">{{ product.vendor | default: 'TONE PERFECTION' }} &mdash; radiant skincare</div>
-    <div class="p-desc">{{ product.description | default: 'A lightweight brightening serum designed to fade dark spots and even out skin tone without irritation.' }}</div>
+    <div class="p-subtitle">Even &amp; Illuminate</div>
+    <div class="p-desc">{{ product.description | default: 'A targeted brightening serum designed to reduce the appearance of dark spots and uneven tone. It helps improve clarity, boost radiance, and support a smoother, more even-looking complexion with consistent use.' }}</div>
 
     {%- form 'product', product, id: 'tranexamicForm' -%}
       <input type="hidden" name="id" value="{{ current_variant.id }}">
@@ -80,36 +80,90 @@
     <div class="acc-item">
       <div class="acc-head">
         <span>&#10022;</span>
-        <span class="acc-label">benefits</span>
+        <span class="acc-label">BENEFITS</span>
         <span class="acc-arrow">&#8250;</span>
       </div>
       <div class="acc-body"><div class="acc-body-inner">
-        <p class="acc-text">{{ product.metafields.custom.benefits | default: 'Brightens dull skin, fades dark spots, and evens out skin tone for a healthy, radiant glow with continued use.' }}</p>
+        <ul class="acc-text acc-list">
+          <li>Helps reduce the appearance of dark spots and discoloration</li>
+          <li>Supports a brighter, more even skin tone</li>
+          <li>Improves dullness and uneven texture</li>
+          <li>Enhances overall skin clarity and radiance</li>
+          <li>Hydrates while supporting the skin barrier</li>
+          <li>Helps smooth and refine the skin surface</li>
+          <li>Promotes a healthier, more luminous glow</li>
+        </ul>
       </div></div>
     </div>
 
     <div class="acc-item">
       <div class="acc-head">
         <span>&#9678;</span>
-        <span class="acc-label">application</span>
+        <span class="acc-label">APPLICATION</span>
         <span class="acc-arrow">&#8250;</span>
       </div>
       <div class="acc-body"><div class="acc-body-inner">
-        <p class="acc-text">{{ product.metafields.custom.application | default: 'Apply 2–3 drops to clean skin morning and night, then follow with moisturizer and SPF during the day.' }}</p>
+        <p class="acc-text">Use morning and night after cleansing and toning. Apply 2-3 drops to face and neck and gently press into the skin. Follow with moisturizer and use sunscreen during the day.</p>
+      </div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head">
+        <span>&#10024;</span>
+        <span class="acc-label">ELARIS7 TRICKS</span>
+        <span class="acc-arrow">&#8250;</span>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <ul class="acc-text acc-list">
+          <li>Apply on slightly damp skin for better absorption</li>
+          <li>Use consistently for visible brightening results</li>
+          <li>Pair with sunscreen daily to prevent further discoloration</li>
+          <li>Layer with moisturizer to lock in hydration</li>
+        </ul>
       </div></div>
     </div>
 
     <div class="acc-item">
       <div class="acc-head">
         <span>&#127807;</span>
-        <span class="acc-label">key ingredients</span>
+        <span class="acc-label">KEY INGREDIENTS</span>
         <span class="acc-arrow">&#8250;</span>
       </div>
       <div class="acc-body"><div class="acc-body-inner">
-        <p class="acc-text">{{ product.metafields.custom.ingredients | default: 'Tranexamic acid, niacinamide, and centella asiatica work together to brighten and soothe the skin barrier.' }}</p>
+        <ul class="acc-text acc-list">
+          <li>Tranexamic Acid (4%)</li>
+          <li>Niacinamide (10%)</li>
+          <li>Vitamin C</li>
+          <li>Alpha Arbutin</li>
+          <li>Hyaluronic Acid</li>
+          <li>Glycerin</li>
+          <li>Panthenol (Vitamin B5)</li>
+          <li>Vitamin E</li>
+          <li>Peptides</li>
+          <li>Botanical Extracts</li>
+        </ul>
       </div></div>
     </div>
   </div>
+</section>
+
+<!-- What's inside -->
+<section class="whats-inside">
+  <h2 class="whats-title">what's inside</h2>
+  <p class="whats-intro">A potent brightening serum formulated to target dark spots, even skin tone, and enhance natural radiance.</p>
+
+  <div class="whats-grid">
+    <div class="whats-card">
+      <div class="whats-name">TRANEXAMIC ACID (4%)</div>
+      <div class="whats-desc">helps visibly reduce dark spots and discoloration</div>
+    </div>
+    <div class="whats-card">
+      <div class="whats-name">NIACINAMIDE (10%)</div>
+      <div class="whats-desc">supports even tone and improves dullness</div>
+    </div>
+  </div>
+
+  <p class="whats-extra">also made with Vitamin C, Alpha Arbutin, Hyaluronic Acid, Glycerin, Panthenol, Vitamin E, peptides, and botanical extracts for hydration, barrier support, and glowing skin</p>
 </section>
 
 <!-- Product FAQ -->
@@ -118,37 +172,37 @@
     <h2 class="pfaq-title">FAQ</h2>
 
     <div class="pfaq-item">
-      <div class="pfaq-head"><span>can i use this serum daily?</span><span class="pfaq-plus">+</span></div>
+      <div class="pfaq-head"><span>Can I use this serum every day?</span><span class="pfaq-plus">+</span></div>
       <div class="pfaq-body"><div class="pfaq-body-inner">
-        <p class="pfaq-text">Yes, it is gentle enough for daily use&mdash;apply morning and night for best results.</p>
+        <p class="pfaq-text">Yes, it is suitable for daily use, both morning and night.</p>
       </div></div>
     </div>
 
     <div class="pfaq-item">
-      <div class="pfaq-head"><span>do i need to wash my face after applying it?</span><span class="pfaq-plus">+</span></div>
+      <div class="pfaq-head"><span>Is it suitable for sensitive skin?</span><span class="pfaq-plus">+</span></div>
       <div class="pfaq-body"><div class="pfaq-body-inner">
-        <p class="pfaq-text">No. Leave it on and follow with moisturizer and sunscreen as usual.</p>
+        <p class="pfaq-text">Yes, it includes soothing ingredients, but patch testing is recommended.</p>
       </div></div>
     </div>
 
     <div class="pfaq-item">
-      <div class="pfaq-head"><span>will it make my skin greasy?</span><span class="pfaq-plus">+</span></div>
+      <div class="pfaq-head"><span>Does it help with dark spots and pigmentation?</span><span class="pfaq-plus">+</span></div>
       <div class="pfaq-body"><div class="pfaq-body-inner">
-        <p class="pfaq-text">No. The lightweight formula absorbs quickly and leaves a non-greasy finish.</p>
+        <p class="pfaq-text">Yes, it is designed to target discoloration and improve uneven tone.</p>
       </div></div>
     </div>
 
     <div class="pfaq-item">
-      <div class="pfaq-head"><span>how often should i use it?</span><span class="pfaq-plus">+</span></div>
+      <div class="pfaq-head"><span>Can I layer it with other skincare products?</span><span class="pfaq-plus">+</span></div>
       <div class="pfaq-body"><div class="pfaq-body-inner">
-        <p class="pfaq-text">Twice daily is ideal, but even once-daily use will show visible improvement over time.</p>
+        <p class="pfaq-text">Yes, it works well with moisturizers, sunscreens, and other gentle actives.</p>
       </div></div>
     </div>
 
     <div class="pfaq-item">
-      <div class="pfaq-head"><span>is it suitable for all skin types?</span><span class="pfaq-plus">+</span></div>
+      <div class="pfaq-head"><span>Do I need to use sunscreen with this?</span><span class="pfaq-plus">+</span></div>
       <div class="pfaq-body"><div class="pfaq-body-inner">
-        <p class="pfaq-text">Absolutely. It is formulated to work beautifully across all skin types, including sensitive skin.</p>
+        <p class="pfaq-text">Yes, sunscreen is essential during the day to protect and maintain results.</p>
       </div></div>
     </div>
   </div>
